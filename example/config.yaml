@@ -1,0 +1,4 @@
+function_name: example-lambda
+handler: service.handler
+description: Returns an ASCII-art version of provided text
+
