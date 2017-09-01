@@ -7,26 +7,15 @@ This is based on the super useful python-lambda library:
 
 # Usage
 
-An example of a usable project can be found in the [example/](./example/) directory.  This example lambda function
-takes a JSON input file like the provided [event.json](./example/event.json) and returns an ASCII-art version of the text.
+An example of a usable project can be found in the [example/](./example/) directory.  This lambda function
+takes a JSON input file like the provided [event.json](./example/event.json) and returns an ASCII-art version of the text
+described in it.  The provided [Dockerfile](./example/Dockerfile) derives from this image and loads the current workspace
+into the image, then installs dependencies from the [requirements.txt](./example/requirements.txt) file.
+
+To build a docker image called _example-lambda-image_ with the example lambda function in it, run:
 
 ```
 $ cd example/
-```
-
-The [Dockerfile](./example/Dockerfile) in the example directory loads the current workspace into the image and installs
-dependencies from the [requirements.txt](./example/requirements.txt) file:
-
-```
-$ cat Dockerfile
-FROM kilna/alpine-aws-python-lambda
-COPY . /workspace
-RUN pip install -r requirements.txt
-```
-
-To build a docker image called _example-lambda-image_ with the lambda function in it, run:
-
-```
 $ docker build --tag example-lambda-image .
 ```
 
