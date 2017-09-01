@@ -1,5 +1,8 @@
 # alpine-aws-python-lambda
-Lightweight [docker image](https://hub.docker.com/r/kilna/alpine-aws-python-lambda/) for running and packaging python-based AWS lambda code.  This is based on [nficano](https://github.com/nficano/)'s super useful [python-lambda library](https://github.com/nficano/python-lambda/)
+Lightweight docker image for running and packaging python-based AWS lambda code.  This is based on [nficano](https://github.com/nficano/)'s super useful [python-lambda library](https://github.com/nficano/python-lambda/)
+
+* [alpine-aws-python-lambda on docker hub](https://hub.docker.com/r/kilna/alpine-aws-python-lambda/)
+* [alpine-aws-python-lambda on github](https://github.com/kilna/alpine-aws-python-lambda)
 
 # Usage
 
