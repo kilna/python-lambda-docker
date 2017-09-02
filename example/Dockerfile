@@ -1,3 +1,3 @@
-FROM kilna/alpine-aws-python-lambda:latest
+FROM kilna/python-lambda:latest
 COPY . /lambda
 RUN pip install -r requirements.txt

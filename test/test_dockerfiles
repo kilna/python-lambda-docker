@@ -4,7 +4,7 @@ set -e -o pipefail
 
 TMPDIR=${TMPDIR:-/tmp}
 docker_dir="$PWD"
-base_image="alpine-aws-python-lambda"
+base_image="python-lambda"
 example_image="example-lambda-image"
 
 header() { printf '=%.0s' {1..79}; echo; echo $@; printf '=%.0s' {1..79}; echo; }

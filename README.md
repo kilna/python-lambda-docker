@@ -8,7 +8,7 @@ Lightweight docker image for running and packaging python-based AWS lambda code.
 
 I needed a Docker-based environment in which to host AWS python lambda functions for the purpose of testing and building them... python-lambda works well under virtualenv for development, but build and deployment automation require a clean and reproducible environment to operate in. Our CI system already supported Docker as a containerization sytem, so it was the obvious choice.
 
-In order to use this, you will have your project derive its own Dockerfile based on a base alpine-aws-python-lambda image corresponding to which version of Python you wish to run.
+In order to use this, you will have your project derive its own Dockerfile based on a base python-lambda image corresponding to which version of Python you wish to run.
 
 # Usage
 
@@ -65,12 +65,12 @@ The example Dockerfile uses _:latest_ in the FROM line, which is currently the s
 For instance, if you want to use Python version 2.7 change the first line of your Dockerfile from:
 
 ```
-FROM kilna/alpine-aws-python-lambda:latest
+FROM kilna/python-lambda:latest
 ```
 
 To:
 
 ```
-FROM kilna/alpine-aws-python-lambda:2.7
+FROM kilna/python-lambda:2.7
 ```
 
