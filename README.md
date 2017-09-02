@@ -1,16 +1,20 @@
 # python-lambda-docker
-Lightweight docker image for running and packaging python-based AWS lambda code.  This is based on [nficano](https://github.com/nficano/)'s super useful [python-lambda library](https://github.com/nficano/python-lambda/)
 
-* [alpine-aws-python-lambda on docker hub](https://hub.docker.com/r/kilna/alpine-aws-python-lambda/)
-* [alpine-aws-python-lambda on github](https://github.com/kilna/alpine-aws-python-lambda)
+Lightweight docker image for running and packaging python-based AWS lambda code
 
-# Purpose
+## Links
+
+* Docker: [python-lambda](https://hub.docker.com/r/kilna/python-lambda/)
+* GitHub: [python-lambda-docker](https://github.com/kilna/python-lambda-docker)
+* Based on the [python-lambda library](https://github.com/nficano/python-lambda/) by [nficano](https://github.com/nficano/)
+
+## Purpose
 
 I needed a Docker-based environment in which to host AWS python lambda functions for the purpose of testing and building them... python-lambda works well under virtualenv for development, but build and deployment automation require a clean and reproducible environment to operate in. Our CI system already supported Docker as a containerization sytem, so it was the obvious choice.
 
 In order to use this, you will have your project derive its own Dockerfile based on a base python-lambda image corresponding to which version of Python you wish to run.
 
-# Usage
+## Usage
 
 An example of a usable project can be found in the [example/](./example/) directory.  This lambda function takes a JSON input file like the provided [event.json](./example/event.json) and returns an ASCII-art version of the text described in it.  The provided [Dockerfile](./example/Dockerfile) derives from this image and loads the current workspace into the image, then installs dependencies from the [requirements.txt](./example/requirements.txt) file.  
 
@@ -38,7 +42,7 @@ If you would like to see if your lambda function builds properly, run:
 $ docker run example-lambda-image lambda build
 ```
 
-## Build and Test
+### Build and Test
 
 If you would like to build and test the lambda function and gather up the results, you can run:
 
@@ -58,7 +62,7 @@ Behind the scenes, what this script does is:
 * Tars the log files, and the contents of the dist directory in /lambda on the container and pipes it to standard output
 * Untars the contents bundled up within the container, and extracts them into your current directory 
 
-## Python Version
+### Python Version
 
 The example Dockerfile uses _:latest_ in the FROM line, which is currently the same as _:python-3.6_, but if you wish to use different python versions you can change this.
 
