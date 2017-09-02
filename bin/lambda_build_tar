@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# This file runs 'lambda build', saving the log to build.log, then tars both
+# the dist/ directory and the build.log file to STDOUT
+
+set -e
+cd /lambda
+rm -rf *.log dist &>/dev/null || true
+lambda build &>build.log
+if [ -x 'run_tests' ]; then
+  ./run_tests &>test.log
+fi
+tar -c *.log dist
+

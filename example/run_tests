@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+set -o pipefail
+cd /lambda
+if [ `lambda invoke | md5sum | cut -d ' ' -f 1` != '5cd3139eadee0a85b2bb9f2164f3b6f6' ]; then
+  echo 'ERROR: md5sum of output returned by lambda invoke did not match expected results'
+fi
+
