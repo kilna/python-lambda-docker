@@ -1,7 +1,8 @@
 # python-lambda-docker
 
-[![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+<!-- [![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/) -->
+[![image](https://images.microbadger.com/badges/image/roribio16/alpine-sqs.svg)](https://microbadger.com/images/roribio16/alpine-sqs)
 [![docker pulls](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![docker stars](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![docker build](https://img.shields.io/badge/docker_build-automated-green.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
