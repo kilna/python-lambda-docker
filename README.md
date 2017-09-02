@@ -25,12 +25,11 @@ If you want to execute the lambda function against the [event.json](./example/ev
 
 ```
 $ docker run example-lambda-image lambda invoke
-  _  _         _   _                                    _      _   _
- | || |  ___  | | | |  ___        __ __ __  ___   _ _  | |  __| | | |
- | __ | / -_) | | | | / _ \  _    \ V  V / / _ \ | '_| | | / _` | |_|
- |_||_| \___| |_| |_| \___/ ( )    \_/\_/  \___/ |_|   |_| \__,_| (_)
-                            |/
-
+ _  _     _ _                        _    _ _
+| || |___| | |___    __ __ _____ _ _| |__| | |
+| __ / -_) | / _ \_  \ V  V / _ \ '_| / _` |_|
+|_||_\___|_|_\___( )  \_/\_/\___/_| |_\__,_(_)
+                 |/
 ```
 
 If you would like to see if your lambda function builds properly, run:
@@ -72,6 +71,6 @@ FROM kilna/alpine-aws-python-lambda:latest
 To:
 
 ```
-FROM kilna/alpine-aws-python-lambda:python-2.7
+FROM kilna/alpine-aws-python-lambda:2.7
 ```
 
