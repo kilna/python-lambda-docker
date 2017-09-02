@@ -1,5 +1,14 @@
 # python-lambda-docker
 
+[![github downloads](https://img.shields.io/github/downloads/kilna/python-lambda-docker/total.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/graphs/traffic)
+[![docker pulls](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![docker stars](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![docker build](https://img.shields.io/docker/automated/kilna/python-lambda.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
+[![build stars](https://img.shields.io/docker/build/kilna/python-lambda.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
+[![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![python versions](https://img.shields.io/pypi/pyversions/python-lambda.svg?style=plastic)](https://github.com/nficano/python-lambda/)
+
 Lightweight docker image for running and packaging python-based AWS lambda code
 
 ## Links
