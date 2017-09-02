@@ -1,12 +1,13 @@
 # python-lambda-docker
 
+
+
 [![github downloads](https://img.shields.io/github/downloads/kilna/python-lambda-docker/total.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/graphs/traffic)
 [![docker pulls](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![docker stars](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![docker build](https://img.shields.io/docker/automated/kilna/python-lambda.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
-[![build stars](https://img.shields.io/docker/build/kilna/python-lambda.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
-[![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![docker build](https://img.shields.io/badge/automated-green.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
+<!-- [![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/) -->
 [![python versions](https://img.shields.io/badge/python-2.7,_3.3,_3.4,_3.5,_3.6-blue.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/)
 
 Lightweight docker image for running and packaging python-based AWS lambda code
@@ -25,7 +26,7 @@ In order to use this, you will have your project derive its own Dockerfile based
 
 ## Usage
 
-An example of a usable project can be found in the [example/](./example/) directory.  This lambda function takes a JSON input file like the provided [event.json](./example/event.json) and returns an ASCII-art version of the text described in it.  The provided [Dockerfile](./example/Dockerfile) derives from this image and loads the current workspace into the image, then installs dependencies from the [requirements.txt](./example/requirements.txt) file.  
+An example of a usable project can be found in the [example/](./example/) directory.  This lambda function in [service.py](./example/service.py) takes a JSON input file like the one provided in [event.json](./example/event.json) and returns an ASCII-art version of the text described in it.  The provided [Dockerfile](./example/Dockerfile) derives from this image and loads the current workspace into the image at the path _/lambda_, then installs dependencies from the [requirements.txt](./example/requirements.txt) file.  
 
 To build a docker image called _example-lambda-image_ with the example lambda function in it, run:
 
@@ -45,7 +46,7 @@ $ docker run example-lambda-image lambda invoke
                  |/
 ```
 
-If you would like to see if your lambda function builds properly, run:
+If you would like to see if your lambda function build (which will package the lambda and all dependencies within the container into a zip file), run:
 
 ```
 $ docker run example-lambda-image lambda build
@@ -66,8 +67,8 @@ dist/2017-09-01-003647-example-lambda.zip
 Behind the scenes, what this script does is:
 
 * Removes any log and dist files from prior runs
-* Runs 'lambda build' and store the log in _/lambda/build.log_ in the container
-* If present and executable, run _/lambda/run_tests_ and store the log in /lambda/test.log in the container
+* Runs 'lambda build' and stores the log in _/lambda/build.log_ in the container
+* If present and executable, run _/lambda/run_tests_ and stores the log in /lambda/test.log in the container
 * Tars the log files, and the contents of the dist directory in /lambda on the container and pipes it to standard output
 * Untars the contents bundled up within the container, and extracts them into your current directory 
 
