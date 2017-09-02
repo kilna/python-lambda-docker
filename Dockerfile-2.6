@@ -1,0 +1,6 @@
+FROM python:2.6-alpine
+LABEL maintainer="Kilna kilna@kilna.com"
+RUN pip install python-lambda &&\
+    mkdir /lambda
+COPY bin/* /usr/local/bin/
+WORKDIR /lambda
