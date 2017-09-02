@@ -1,0 +1,67 @@
+#!/bin/bash
+
+set -e -o pipefail
+
+TMPDIR=${TMPDIR:-/tmp}
+docker_dir="$PWD"
+base_image="alpine-aws-python-lambda"
+example_image="example-lambda-image"
+
+header() { printf '=%.0s' {1..79}; echo; echo $@; printf '=%.0s' {1..79}; echo; }
+
+declare -a dockerfiles=( "$@" )
+if [[ $# == 0 ]]; then
+  dockerfiles=( Dockerfile-* )
+fi
+
+for dockerfile in "${dockerfiles[@]}"; do
+  
+  ver=$(echo "$dockerfile" | cut -d '-' -f 2)
+  tag="test-$ver"
+  base_image_tag="$base_image:$tag"
+  example_image_tag="$example_image:$tag"
+  example_image_tmp="$TMPDIR/$example_image-$tag"
+  
+  header "Build base image - $ver"
+  set -x
+  cd $docker_dir
+  docker build --tag $base_image_tag --file $dockerfile .
+  set +x
+
+  header "Copy derived project - $ver"
+  set -x
+  rm -rvf $example_image_tmp &>/dev/null || true
+  cp -rv $docker_dir/example/ $example_image_tmp/
+  cd $example_image_tmp
+  sed -i "1s/.*/FROM $base_image_tag/" Dockerfile
+  set +x
+
+  header "Build derived docker - $ver"
+  set -x
+  docker build --tag $example_image_tag .
+  set +x
+
+  header "Invoke lambda - $ver"
+  set -x
+  docker run --rm $example_image_tag lambda invoke
+  set +x
+
+  header "Run tests - $ver"
+  set -x
+  docker run --rm $example_image_tag ./run_tests
+  set +x
+
+  header "Build lambda - $ver"
+  set -x
+  docker run --rm $example_image_tag lambda build
+  set +x
+
+  header "Cleanup - $ver"
+  set -x
+  docker rmi -f $example_image_tag
+  docker rmi -f $base_image_tag
+  rm -rvf $example_image_tmp
+  set +x
+
+done
+
