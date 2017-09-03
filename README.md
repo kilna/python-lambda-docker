@@ -26,7 +26,7 @@ An example of a usable project can be found in the [example/](./example/) direct
 
 ### Building a Derived Docker Image
 
-To build a docker image from the provided [exmaple/](./exmaple) called _example-lambda-image_ with the ASCII-art lambda function in it, run:
+To build a docker image from the provided [example/](./example) called _example-lambda-image_ with the ASCII-art lambda function in it, run:
 
 ```
 $ cd example/
