@@ -4,3 +4,7 @@ RUN pip install python-lambda &&\
     mkdir /lambda
 COPY bin/* /usr/local/bin/
 WORKDIR /lambda
+ONBUILD COPY . /lambda
+ONBUILD RUN pip install -r requirements.txt &&\
+            if [[ -d .aws ]]; then cd ~; ln -s /lambda/.aws; fi
+ONBUILD VOLUME /lambda

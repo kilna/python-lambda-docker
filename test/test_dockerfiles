@@ -17,7 +17,7 @@ fi
 for dockerfile in "${dockerfiles[@]}"; do
   
   ver=$(echo "$dockerfile" | cut -d '-' -f 2)
-  tag="test-$ver"
+  tag="$ver-test"
   base_image_tag="$base_image:$tag"
   example_image_tag="$example_image:$tag"
   example_image_tmp="$TMPDIR/$example_image-$tag"
@@ -35,10 +35,7 @@ for dockerfile in "${dockerfiles[@]}"; do
   cd $example_image_tmp
   sed -i "1s/.*/FROM $base_image_tag/" Dockerfile
   sed -i "s/runtime: .*/runtime: python$ver/" config.yaml
-  if [[ -d ~/.aws ]]; then
-    cp -rv ~/.aws $example_image_tmp
-    echo "COPY .aws/ /root/.aws/" >> Dockerfile
-  fi
+  test -d ~/.aws && cp -rv ~/.aws $example_image_tmp
   set +x
 
   header "Build derived docker - $ver"

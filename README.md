@@ -4,9 +4,9 @@
 [![](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![](https://img.shields.io/badge/docker_build-automated-blue.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
-[![](https://img.shields.io/badge/python-2.7,_3.3,_3.4,_3.5,_3.6-blue.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/)
+[![](https://img.shields.io/badge/python-2.7,_3.6-blue.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/)
 
-Lightweight docker image for running and packaging python-based AWS lambda code
+Lightweight docker image for running, testing, packaging and deploying python-based AWS lambda functions
 
 ## Links
 
@@ -37,7 +37,7 @@ Any time you make changes to the example project, you'll need to re-run the `doc
 
 #### Switching Python Versions
 
-The example [Dockerfile](./example/Dockerfile) uses a _:latest_ docker tag in the FROM line, which is currently the same as _:3.6_, but if you wish to use a different Python version you can change this. Supported Python versions are 2.7, 3.3, 3.4, 3.5, 3.6. To use Python version 2.7 change the first line of the example [Dockerfile](./example/Dockerfile) to:
+The example [Dockerfile](./example/Dockerfile) uses a _:latest_ docker tag in the FROM line, which is currently the same as _:3.6_, but if you wish to use a different Python version you can change this. Supported Python versions are 2.7 and 3.6. To use Python version 2.7 change the first line of the example [Dockerfile](./example/Dockerfile) to:
 
 ```
 FROM kilna/python-lambda:2.7
@@ -92,7 +92,7 @@ Behind the scenes, what this does is:
 
 ### Deploying the Lambda Function
 
-You can deploy your lambda function to Amazon's infrastructure...  you'll need to add AWS credentials into the [config.yaml](./example/config.yaml) file. Alternately you can credentials into your container by configuring them through the Dockerfile, for example by adding a `COPY .aws /root/.aws` line, where example/.aws/ is a copy of your ~/.aws/ directory. Once AWS is working within your container, you can then run the following to deploy your function to Amazon:
+You can deploy your lambda function to Amazon's infrastructure...  you'll need to add AWS credentials into the [config.yaml](./example/config.yaml) file. Alternately, if your local AWS CLI environment is working, you can add a _.aws/_ directory (you can `cp ~/.aws`) into the _example/_ directory), then re-build your image. Once AWS is working within your container, you can then run the following to deploy your function to Amazon:
 
 ```
 $ docker run example-lambda-image lambda deploy
