@@ -1,8 +1,8 @@
 # python-lambda-docker
 
+[![](https://images.microbadger.com/badges/image/kilna/python-lambda.svg)](https://microbadger.com/images/kilna/python-lambda)
 [![](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![](https://images.microbadger.com/badges/image/kilna/python-lambda.svg)](https://microbadger.com/images/kilna/python-lambda)
 [![](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
 [![](https://img.shields.io/badge/docker_build-automated-blue.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
