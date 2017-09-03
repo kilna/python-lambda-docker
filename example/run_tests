@@ -3,8 +3,9 @@
 set -e
 set -o pipefail
 cd /lambda
-if [ `lambda invoke | md5sum | cut -d ' ' -f 1` != '53fb4322cc3fe840f02530054ef93603' ]; then
+if [ `lambda invoke | md5sum | cut -d ' ' -f 1` != '64358779feaa1712810ace1142db3d89' ]; then
   echo 'ERROR: md5sum of output returned by lambda invoke did not match expected results' 1&>2
   exit 1
 fi
+echo "Tests complete."
 

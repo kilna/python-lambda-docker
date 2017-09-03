@@ -34,6 +34,11 @@ for dockerfile in "${dockerfiles[@]}"; do
   cp -rv $docker_dir/example/ $example_image_tmp/
   cd $example_image_tmp
   sed -i "1s/.*/FROM $base_image_tag/" Dockerfile
+  sed -i "s/runtime: .*/runtime: python$ver/" config.yaml
+  if [[ -d ~/.aws ]]; then
+    cp -rv ~/.aws $example_image_tmp
+    echo "COPY .aws/ /root/.aws/" >> Dockerfile
+  fi
   set +x
 
   header "Build derived docker - $ver"
@@ -41,19 +46,36 @@ for dockerfile in "${dockerfiles[@]}"; do
   docker build --tag $example_image_tag .
   set +x
 
-  header "Invoke lambda - $ver"
+  header "Invoke lambda in container - $ver"
   set -x
-  docker run --rm $example_image_tag lambda invoke
+  docker run $example_image_tag lambda invoke
   set +x
 
   header "Run tests - $ver"
   set -x
-  docker run --rm $example_image_tag ./run_tests
+  docker run $example_image_tag ./run_tests
   set +x
 
   header "Build lambda - $ver"
   set -x
-  docker run --rm $example_image_tag lambda build
+  docker run $example_image_tag lambda build
+  set +x
+
+  header "Deploy lambda - $ver"
+  set -x
+  docker run --rm $example_image_tag lambda deploy
+  set +x
+
+  header "Invoke lambda on AWS - $ver"
+  set -x
+  aws lambda invoke --function-name=example-lambda --payload "`cat event.json`" output.json 2>result.json
+  cat result.json
+  cat output.json
+  [[ `grep Error result.json | wc -l` -ne 0 ]] && exit 1
+  if [[ `cat output.json | md5sum | cut -d ' ' -f 1` != 'f5fc1910251a0497f1edf58cccbfc7b6' ]]; then
+    echo 'ERROR: md5sum of output returned by lambda invoke on AWS did not match expected results' 1&>2
+    exit 2
+  fi
   set +x
 
   header "Cleanup - $ver"
