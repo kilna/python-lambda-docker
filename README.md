@@ -92,6 +92,9 @@ Behind the scenes, what this does is:
 
 ### Deploying the Lambda Function
 
-You can deploy your lambda function to Amazon's infrastructure...  firstly you'll want to add values to the 
+You can deploy your lambda function to Amazon's infrastructure...  you'll need to add AWS credentials into the [config.yaml](./example/config.yaml) file. Alternately you can credentials into your container by configuring them through the Dockerfile, for example by adding a `COPY .aws /root/.aws` line, where example/.aws/ is a copy of your ~/.aws/ directory. Once AWS is working within your container, you can then run the following to deploy your function to Amazon:
 
+```
+$ docker run example-lambda-image lambda deploy
+```
 
