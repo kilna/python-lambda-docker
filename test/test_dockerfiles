@@ -76,6 +76,7 @@ for dockerfile in "${dockerfiles[@]}"; do
     echo 'ERROR: md5sum of output returned by lambda invoke on AWS did not match expected results' 1&>2
     exit 2
   fi
+  aws lambda delete-function --function-name=example-lambda
   set +x
 
   header "Cleanup - $ver"
