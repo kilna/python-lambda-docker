@@ -1,12 +1,12 @@
 # python-lambda-docker
 
-<!-- [![image size](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![image layers](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/) -->
-[![image](https://images.microbadger.com/badges/image/kilna/python-lambda.svg)](https://microbadger.com/images/kilna/python-lambda)
-[![docker pulls](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![docker stars](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
-[![docker build](https://img.shields.io/badge/docker_build-automated-blue.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
-[![python versions](https://img.shields.io/badge/python-2.7,_3.3,_3.4,_3.5,_3.6-blue.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/)
+[![](https://images.microbadger.com/badges/image/kilna/python-lambda.svg)](https://microbadger.com/images/kilna/python-lambda)
+[![](https://img.shields.io/docker/imagelayers/image-size/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![](https://img.shields.io/docker/imagelayers/layers/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![](https://img.shields.io/docker/pulls/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![](https://img.shields.io/docker/stars/kilna/python-lambda.svg?style=plastic)](https://hub.docker.com/r/kilna/python-lambda/)
+[![](https://img.shields.io/badge/docker_build-automated-blue.svg?style=plastic)](https://cloud.docker.com/swarm/kilna/repository/docker/kilna/python-lambda/builds)
+[![](https://img.shields.io/badge/python-2.7,_3.3,_3.4,_3.5,_3.6-blue.svg?style=plastic)](https://github.com/kilna/python-lambda-docker/)
 
 Lightweight docker image for running and packaging python-based AWS lambda code
 
@@ -85,4 +85,3 @@ To:
 ```
 FROM kilna/python-lambda:2.7
 ```
-
