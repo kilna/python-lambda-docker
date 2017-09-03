@@ -16,7 +16,7 @@ Lightweight docker image for running and packaging python-based AWS lambda code
 
 ## Purpose
 
-I needed a Docker-based environment in which to host AWS python lambda functions for the purpose of testing and building them... python-lambda works well under virtualenv for development, but build and deployment automation require a clean and reproducible environment to operate in. Our CI system already supported Docker as a containerization sytem, so it was the obvious choice.
+I needed a Docker-based environment in which to host AWS python lambda functions for the purpose of testing and building them... python-lambda works well under virtualenv for development, but build and deployment automation require a clean and reproducible environment to operate in. Our CI system already supported Docker as a containerization system, so it was the obvious choice.
 
 In order to use this, you will have your project derive its own Dockerfile based on a base python-lambda image corresponding to which version of Python you wish to run.
 
