@@ -1,11 +1,23 @@
-FROM python:2.7-alpine
+ARG python_version=2.7
+ARG alpine_version=3.7
+FROM python:${python_version}-alpine${alpine_version}
 LABEL maintainer="Kilna kilna@kilna.com"
-RUN pip install python-lambda &&\
+ARG python_lambda_version
+ENV python_version=${python_version}\
+    python_lambda_version=${python_lambda_version:-master}\
+    python_lambda_url=${python_lambda_url:-https://github.com/nficano/python-lambda}
+RUN set -x -e -o pipefail;\
+    if echo "$python_lambda_version" | grep -q '^[0-9.]*$'; then\
+      pip install ${python_lambda_url}/zipball/v${python_lambda_version};\
+    else\
+      pip install ${python_lambda_url}/zipball/${python_lambda_version};\
+    fi;\
     mkdir /lambda
 COPY bin/* /usr/local/bin/
-RUN chmod +x /usr/local/bin/lambda_*
+RUN chmod +x /usr/local/bin/*
 WORKDIR /lambda
 ONBUILD COPY . /lambda
-ONBUILD RUN pip install -r requirements.txt &&\
-            if [[ -d .aws ]]; then cd ~; ln -s /lambda/.aws; fi
+ONBUILD RUN /usr/local/bin/entrypoint.sh
 ONBUILD VOLUME /lambda
+ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
+

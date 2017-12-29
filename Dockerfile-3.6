@@ -1,6 +1,14 @@
-FROM python:3.6-alpine
+FROM python:3.6-alpine3.7
 LABEL maintainer="Kilna kilna@kilna.com"
-RUN pip install python-lambda &&\
+ARG python_lambda_version
+ENV python_lambda_version=${python_lambda_version:-master}\
+    python_lambda_url=${python_lambda_url:-https://github.com/nficano/python-lambda}
+RUN set -x -e -o pipefail;\
+    if echo "$python_lambda_version" | grep -q '^[0-9.]*$'; then\
+      pip install ${python_lambda_url}/zipball/v${python_lambda_version};\
+    else\
+      pip install ${python_lambda_url}/zipball/${python_lambda_version};\
+    fi;\
     mkdir /lambda
 COPY bin/* /usr/local/bin/
 RUN chmod +x /usr/local/bin/lambda_*
