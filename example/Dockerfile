@@ -1,1 +1,1 @@
-FROM kilna/python-lambda:latest
+FROM kilna/python-lambda:2.7
