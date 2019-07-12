@@ -64,7 +64,7 @@ $ docker run example-lambda-image lambda invoke
 
 ### Building and Testing the Lambda Function
 
-If you would like to builf the lambda function (which will package the function and all its dependencies), run:
+If you would like to build the lambda function (which will package the function and all its dependencies), run:
 
 ```
 $ docker run example-lambda-image lambda build
